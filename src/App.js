@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {Components} from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Router, Route, Routes, Link} from 'react-router-dom'
 import {useState} from 'react';
+import Drink from "./components/Drink";
 
 function Header(props){
   return(
@@ -32,7 +33,7 @@ function Container(){
   <div className="main_container">
     <div className="aside">
       <div className="test">
-          <ul><li><a href="/">테스트</a></li></ul>
+          <ul><li><Link to="/Drink">테스트</Link></li></ul>
       </div>
       <div className="catagory">
         <ul>
@@ -61,11 +62,18 @@ function Footer(){
 
 function App() {
   return (
-    <div className="App">
-      <Header title="(로고)"></Header>
-      <Container></Container>
-      <Footer></Footer>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header title="(로고)"></Header>
+        <Container></Container>
+        <Footer></Footer>
+      <Routes>   
+        <Route path='/' element={<Drink/>}>
+          <Drink/>
+        </Route>
+      </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
